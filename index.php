@@ -13,10 +13,10 @@
     <div id="app">
         <div class="container">
             <ul class="list-group">
-                <li v-for="task in taskList" class="list-group-item list-group-item-action " :class="task.done ? 'text-decoration-line-through': ''">{{ task.testo }}</li>
+                <li v-for="task in taskList" class="list-group-item list-group-item-action " :class="task.done ? 'text-decoration-line-through': ''" @click ="task.done ? task.done=false : task.done=true">{{ task.testo }}</li>
             </ul>
             <input v-model="listItem" type="text"/>
-            <button class="btn btn-secondary" @click="addTask" >Aggiungi Task</button>
+            <button class="btn btn-danger" @click="addTask" >Aggiungi Task</button>
         </div>
     </div>
 

@@ -1,31 +1,17 @@
 <?php
 
-    $tasks = [
-        [
-            'testo' => 'Cucinare',
-            'done' => true,
-        ],
-        [
-            'testo' => 'Apparecchiare',
-            'done' => true,
-        ],
-        [
-            'testo' => 'Mangiare',
-            'done' => false,
-        ],
-        [
-            'testo' => 'Bere',
-            'done' => true,
-        ],
-    ];
+    $getDatabase= file_get_contents('database.json');
+    $tasks=json_decode($getDatabase, true);
 
 
     if (isset($_POST['addedTask'])) {
-        $todo = [
+        $tasks[] = [
             'testo' => $_POST['addedTask'],
             'done' => false,
         ];
-        array_push($tasks, $todo);
+        $json_string = json_encode($tasks);
+        file_put_contents('database.json', $json_string);
+
     }
 
     header('Content-Type: application/json');
