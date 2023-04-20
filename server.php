@@ -3,22 +3,30 @@
     $tasks = [
         [
             'testo' => 'Cucinare',
-            'done' => 'True',
+            'done' => true,
         ],
         [
             'testo' => 'Apparecchiare',
-            'done' => 'True',
+            'done' => true,
         ],
         [
             'testo' => 'Mangiare',
-            'done' => 'True',
+            'done' => false,
         ],
         [
             'testo' => 'Bere',
-            'done' => 'True',
+            'done' => true,
         ],
     ];
 
+
+    if (isset($_POST['addedTask'])) {
+        $todo = [
+            'testo' => $_POST['addedTask'],
+            'done' => false,
+        ];
+        array_push($tasks, $todo);
+    }
 
     header('Content-Type: application/json');
     echo json_encode($tasks);

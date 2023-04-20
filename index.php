@@ -10,7 +10,15 @@
 </head>
 <body>
     
-
+    <div id="app">
+        <div class="container">
+            <ul class="list-group">
+                <li v-for="task in taskList" class="list-group-item list-group-item-action " :class="task.done ? 'text-decoration-line-through': ''">{{ task.testo }}</li>
+            </ul>
+            <input v-model="listItem" type="text"/>
+            <button class="btn btn-secondary" @click="addTask" >Aggiungi Task</button>
+        </div>
+    </div>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.6/axios.min.js" integrity="sha512-06NZg89vaTNvnFgFTqi/dJKFadQ6FIglD6Yg1HHWAUtVFFoXli9BZL4q4EO1UTKpOfCfW5ws2Z6gw49Swsilsg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
