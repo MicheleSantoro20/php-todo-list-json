@@ -8,27 +8,12 @@
 
 
     if (isset($_POST['addedTask']) && $_POST['addedTask'] != '') {
-            $arrayid= [];
-        for ($y=0; $y < count($tasks); $y++) {
-            $arrayid[]= $tasks[$y]['id'];
-        }
 
-        $generate = rand(1,3);
-        if (!in_array($generate, $arrayid)) {
-            $tasks[] = [
-                'testo' => $_POST['addedTask'],
-                'done' => false,
-                'id' => $generate ,
-            ];
-        }else {
-            $tasks[] = [
-                'testo' => 'Error',
-                'done' => false,
-                'id' => null ,
-            ];
-        }
-
-
+        $tasks[] = [
+            'testo' => $_POST['addedTask'],
+            'done' => false,
+            'id' => count($tasks) + 1  ,
+        ];
         $json_string = json_encode($tasks);
         file_put_contents('database.json', $json_string);
     }
