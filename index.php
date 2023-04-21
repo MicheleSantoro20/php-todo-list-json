@@ -20,7 +20,7 @@
                 </li>
 
             </ul>
-            <input v-model="listItem" type="text"/>
+            <input v-model="listItem" min="5" type="text"/>
             <button class="btn btn-danger" @click="addTask" >Aggiungi Task</button>
         </div>
     </div>
