@@ -14,14 +14,16 @@
         <div class="container">
             <h1>Elementi della lista</h1>
             <ul class="list-group">
-                <li v-for="(task, i) in taskList" :key="i" class="list-group-item list-group-item-action " :class="task.done ? 'text-decoration-line-through': ''" >
-                    <div @click="confirmDone(i)"> {{ task.testo }} </div>
+                <li v-for="(task, i) in taskList" :key="i" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" >
+                    <div :class="task.done ? 'text-decoration-line-through': ''"> {{ task.testo }}</div>
+                    <span class="text-bg-success p-3 rounded" v-if="task.done == true"  @click="confirmDone(i)">Completato</span>
+                    <span class="text-bg-danger p-3 rounded" v-else="task.done == false"  @click="confirmDone(i)">Non completato</span>
                     <button class="btn btn-danger" @click="delTask(i)" >Elimina</button>
                 </li>
 
             </ul>
             <input v-model="listItem" min="5" type="text"/>
-            <button class="btn btn-danger" @click="addTask" >Aggiungi Task</button>
+            <button class="btn btn-primary" @click="addTask" >Aggiungi Task</button>
         </div>
     </div>
 

@@ -8,11 +8,10 @@
 
 
     if (isset($_POST['addedTask']) && $_POST['addedTask'] != '') {
-
         $tasks[] = [
             'testo' => $_POST['addedTask'],
             'done' => false,
-            'id' => count($tasks) + 1  ,
+            'id' => end($tasks)['id'] + 1  ,
         ];
         $json_string = json_encode($tasks);
         file_put_contents('database.json', $json_string);
